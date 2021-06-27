@@ -1,0 +1,24 @@
+﻿@model BRWebApp.Models.ProductInfo
+
+@{
+    ViewData["Title"] = "ViewDetails";
+}
+<h1 class="text-center">Product Details</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img class="card-img-top" src="~/uploads/@Model.ProductID@Model.ExtName" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">@Model.ProductTitle</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h3>Title : @Model.ProductTitle</h3>
+        <h3>Price : $ @Model.Price</h3>
+        <h5>Product Description :</h5>
+        <p>@Model.Description</p>
+        <a class="btn btn-success text-center" asp-action="PlaceOrder" asp-route-id="@Model.ProductID">Place Order</a>
+    </div>
+</div>

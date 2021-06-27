@@ -1,0 +1,43 @@
+﻿@model BRWebApp.Models.ProductOrder
+
+@{
+    ViewData["Title"] = "PlaceOrder";
+}
+
+<h1 class="text-center">Place Your Bulk Order</h1>
+<div class="row">
+    <div class="col-md-4">
+    <div class="card">
+        <img class="card-img-top" src="~/uploads/@ViewData["ProductID"]@ViewData["ExtName"]" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title">@ViewData["ProductTitle"]</h4>
+            <h4 class="card-title">Price: $ @ViewData["Price"]</h4>
+        </div>
+    </div>
+</div>
+<div class="col-md-8">
+    <form asp-action="PlaceOrder">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="ProductID" type="hidden" value='@ViewData["ProductID"]'/>
+        <input asp-for="Price" type="hidden" value='@ViewData["Price"]' />
+        <div class="form-group">
+            <label asp-for="Quantity" class="control-label"></label>
+            <input asp-for="Quantity" class="form-control" />
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Address" class="control-label"></label>
+            <textarea asp-for="Address" class="form-control"></textarea>
+            <span asp-validation-for="Address" class="text-danger"></span>
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Process Your Order" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

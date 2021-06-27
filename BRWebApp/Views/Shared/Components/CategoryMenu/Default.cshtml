@@ -1,0 +1,14 @@
+﻿@model List<BRWebApp.Models.CategoryInfo>
+<li class="nav-item dropdown">
+    <a class="nav-link  text-dark dropdown-toggle" href="#" id="categoryMenu"
+       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+    <div class="dropdown-menu" aria-labelledby="categoryMenu">
+        <a class="dropdown-item" asp-area="" asp-controller="Home"
+           asp-action="AllProducts">All Ice Creams</a>
+        @foreach (var item in Model)
+        {
+            <a class="dropdown-item" asp-area="" asp-controller="Home"
+               asp-action="ProductsByCategory" asp-route-id="@item.CategoryID">@item.CategoryName</a>
+        }
+    </div>
+</li>
